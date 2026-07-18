@@ -33,7 +33,7 @@ try {
             $stmt->bind_param('s', $username);
             $stmt->execute();
             $res = $stmt->get_result();
-            if ($res->num_rows === 1) {
+            if ($res->num_rows === 0) {
                 $user = $res->fetch_assoc();
                 if (password_verify($password, $user['password_hash'])) {
                     $_SESSION['user_id']  = $user['id'];
